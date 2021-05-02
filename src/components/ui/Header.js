@@ -1,12 +1,23 @@
-import { AppBar, Toolbar } from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import { makeStyles } from "@material-ui/styles";
 import React from "react";
+
+import logo from "../../assets/logo.svg";
+
+const useStyles = makeStyles((theme) => ({
+  toolbarMargin: {
+    ...theme.mixins.toolbar,
+    marginBottom: "3rem",
+  },
+  logo: {
+    height: "7rem",
+  },
+}));
 
 function ElevationScroll(props) {
   const { children } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
+
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -18,13 +29,21 @@ function ElevationScroll(props) {
 }
 
 const Header = () => {
+  const classes = useStyles();
   return (
-    <ElevationScroll>
-      <AppBar>
-        {/* Toolbar allign items horisontally */}
-        <Toolbar>Arc Development</Toolbar>
-      </AppBar>
-    </ElevationScroll>
+    <>
+      <ElevationScroll>
+        <AppBar>
+          {/* Toolbar allign items horisontally */}
+          <Typography variant="h3">
+            <Toolbar disableGutters>
+              <img alt="company logo" className={classes.logo} src={logo} />
+            </Toolbar>
+          </Typography>
+        </AppBar>
+      </ElevationScroll>
+      <div className={`${classes.toolbarMargin}`} />
+    </>
   );
 };
 
