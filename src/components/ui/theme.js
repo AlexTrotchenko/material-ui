@@ -20,8 +20,11 @@ const theme = createMuiTheme({
     danger: "orange",
   },
   typography: {
-    h3: {
-      fontWeight: 300,
+    tabs: {
+      fontFamily: "Raleway",
+      textTransform: "none",
+      fontWeight: 700,
+      fontSize: "1rem",
     },
   },
 });
