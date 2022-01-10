@@ -1,27 +1,22 @@
 import Header from "./ui/Header";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
+
+import { Records } from "../pages/records/Records";
+import RecordDetails from "../pages/recordDetail/recordDetail";
+import ModalManager from "./modals/ModalManager";
 function App() {
   return (
-    <div>
-      <BrowserRouter>
+    <>
+      <Router>
+        <ModalManager />
         <Header />
         <Switch>
-          <Route exact path="/" component={() => <div>Home</div>} />
-          <Route exact path="/services" component={() => <div>Services</div>} />
-          <Route
-            exact
-            path="/theRevolution"
-            component={() => <div>The Revolution</div>}
-          />
-          <Route exact path="/aboutUs" component={() => <div>About us</div>} />
-          <Route
-            exact
-            path="/freeEstimate"
-            component={() => <div>Free Estimate</div>}
-          />
+          <Route exact path="/" component={Records} />
+
+          <Route exact path="/records/:id" component={RecordDetails} />
         </Switch>
-      </BrowserRouter>
-    </div>
+      </Router>
+    </>
   );
 }
 

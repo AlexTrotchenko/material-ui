@@ -1,31 +1,41 @@
-import { createMuiTheme } from "@material-ui/core";
+import { createTheme } from "@mui/material/styles";
+import { skSK } from "@mui/material/locale";
 
-const arcBlue = "#0B72B9";
-const arcOrange = "#FFBA60";
+const darkOrange = "#de4a00";
+const lightOrange = "#ff8800";
+const yellow = "#fff700";
 
-const theme = createMuiTheme({
-  palette: {
-    common: {
-      arcBlue: `${arcBlue}`,
-      arcOrange: `${arcOrange}`,
+const theme = createTheme(
+  {
+    palette: {
+      common: {
+        darkOrange: `${darkOrange}`,
+        lightOrange: `${lightOrange}`,
+        yellow: `${yellow}`,
+      },
+      primary: {
+        main: `${darkOrange}`,
+      },
+      secondary: {
+        main: `${lightOrange}`,
+      },
+      themeYellow: {
+        main: `${yellow}`,
+      },
     },
-    primary: {
-      main: `${arcBlue}`,
+
+    status: {
+      danger: "orange",
     },
-    secondary: {
-      main: `${arcOrange}`,
+    typography: {
+      tabs: {
+        fontFamily: "Raleway",
+        textTransform: "none",
+        fontWeight: 700,
+        fontSize: "1rem",
+      },
     },
   },
-  status: {
-    danger: "orange",
-  },
-  typography: {
-    tabs: {
-      fontFamily: "Raleway",
-      textTransform: "none",
-      fontWeight: 700,
-      fontSize: "1rem",
-    },
-  },
-});
+  skSK
+);
 export default theme;
